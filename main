@@ -22,6 +22,7 @@ end)
 local keybind1 = createKeybind(section1, "Keybind1", "Info", Enum.KeyCode.F, function()
 	sendNoti("Pressed key")
 end)
+--toggleUI()
 
 
 --page2
