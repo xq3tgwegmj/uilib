@@ -196,6 +196,12 @@ ScreenGui.DescendantAdded:Connect(function(d)
 				t.Name = "Type"
 				t.Value = "Text"
 				t.Parent = d
+			elseif d.Name == "CloseYes" then
+				--type
+				local t = Instance.new("StringValue")
+				t.Name = "Type"
+				t.Value = "Accent"
+				t.Parent = d
 			else
 				--type
 				local t = Instance.new("StringValue")
