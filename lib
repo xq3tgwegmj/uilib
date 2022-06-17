@@ -127,6 +127,27 @@ local NotisBreak = Instance.new("Frame")
 local NotisTitle = Instance.new("TextLabel")
 local NotisText = Instance.new("TextLabel")
 local NotisUIListLayout = Instance.new("UIListLayout")
+local GeneralSection = Instance.new("Frame")
+local GeneralUICorner = Instance.new("UICorner")
+local GeneralUIListLayout = Instance.new("UIListLayout")
+local SectionGeneral = Instance.new("TextLabel")
+local SectionGeneralUICorner = Instance.new("UICorner")
+local NotisToggle = Instance.new("TextButton")
+local NotisToggleUICorner = Instance.new("UICorner")
+local NotisToggleStatus = Instance.new("Frame")
+local NotisToggleStatusUICorner = Instance.new("UICorner")
+local CloseUI = Instance.new("TextButton")
+local CloseUIUICorner = Instance.new("UICorner")
+local CloseUInear_me = Instance.new("ImageButton")
+local ConfirmClose = Instance.new("Frame")
+local ConfirmCloseText = Instance.new("TextLabel")
+local ConfirmCloseTextUICorner = Instance.new("UICorner")
+local ConfirmCloseUICorner = Instance.new("UICorner")
+local CloseConfirmClose = Instance.new("TextButton")
+local CloseYes = Instance.new("TextButton")
+local CloseYesUICorner = Instance.new("UICorner")
+local CloseNo = Instance.new("TextButton")
+local CloseNoUICorner = Instance.new("UICorner")
 
 
 getgenv().cbackground = Color3.fromRGB(22, 23, 36)
@@ -165,7 +186,7 @@ end
 ScreenGui.DescendantAdded:Connect(function(d)
 	wait(.5)
 	if not d.Parent then return end
-	if d.Name == "InfoFrame" or d.Name == "CloseInfo" then return end
+	if d.Name == "InfoFrame" or d.Name == "CloseInfo" or d.Name == "ConfirmClose" or d.Name == "CloseConfirmClose" then return end
 	if d:FindFirstAncestor("UIStroke") then return end
 	if d:IsA("TextButton") or d:IsA("TextBox") then
 		if d:IsA("TextButton") then
@@ -188,7 +209,7 @@ ScreenGui.DescendantAdded:Connect(function(d)
 		t.Name = "Type2"
 		t.Value = "Text"
 		t.Parent = d
-		
+
 		if d.Name ~= "NotisBG" and d.Name ~= "Notification" then
 			local uistroke = Instance.new("UIStroke")
 			uistroke.Color = getgenv().caccent
@@ -561,7 +582,8 @@ Heading.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
 Heading.BackgroundTransparency = 1.000
 Heading.Size = UDim2.new(0, 302, 0, 18)
 Heading.Font = Enum.Font.Nunito
-Heading.Text = "Heading"
+Heading.RichText = true
+Heading.Text = "<b>Heading<b>"
 Heading.TextColor3 = Color3.fromRGB(207, 215, 255)
 Heading.TextSize = 18.000
 Heading.TextXAlignment = Enum.TextXAlignment.Left
@@ -932,7 +954,6 @@ OptionsPage.CanvasPosition = Vector2.new(0,0)
 OptionsPage.ZIndex = 10
 OptionsPage.Visible = false
 
-
 UIListLayout_4.Parent = OptionsPage
 UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
@@ -944,7 +965,8 @@ HeadingOptions.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
 HeadingOptions.BackgroundTransparency = 1.000
 HeadingOptions.Size = UDim2.new(0, 302, 0, 18)
 HeadingOptions.Font = Enum.Font.Nunito
-HeadingOptions.Text = "Options"
+HeadingOptions.RichText = true
+HeadingOptions.Text = "<b>Settings</b>"
 HeadingOptions.TextColor3 = Color3.fromRGB(207, 215, 255)
 HeadingOptions.TextSize = 18.000
 HeadingOptions.TextXAlignment = Enum.TextXAlignment.Left
@@ -952,6 +974,260 @@ HeadingOptions.TextYAlignment = Enum.TextYAlignment.Bottom
 
 UICorner_19.CornerRadius = UDim.new(0, 3)
 UICorner_19.Parent = HeadingOptions
+
+GeneralSection.Name = "GeneralSection"
+GeneralSection.Parent = OptionsPage
+GeneralSection.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
+GeneralSection.BackgroundTransparency = 1.000
+GeneralSection.Position = UDim2.new(0, 6, 0, 57)
+GeneralSection.Size = UDim2.new(0, 302, 0, 18)
+GeneralSection.AutomaticSize = Enum.AutomaticSize.Y
+
+GeneralUICorner.CornerRadius = UDim.new(0, 3)
+GeneralUICorner.Name = "GeneralUICorner"
+GeneralUICorner.Parent = GeneralSection
+
+GeneralUIListLayout.Name = "GeneralUIListLayout"
+GeneralUIListLayout.Parent = GeneralSection
+GeneralUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+GeneralUIListLayout.Padding = UDim.new(0, 5)
+
+SectionGeneral.Name = "SectionGeneral"
+SectionGeneral.Parent = GeneralSection
+SectionGeneral.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
+SectionGeneral.Size = UDim2.new(0, 302, 0, 18)
+SectionGeneral.Font = Enum.Font.Nunito
+SectionGeneral.Text = "General settings"
+SectionGeneral.TextColor3 = Color3.fromRGB(207, 215, 255)
+SectionGeneral.TextSize = 16.000
+SectionGeneral.TextXAlignment = Enum.TextXAlignment.Left
+
+SectionGeneralUICorner.CornerRadius = UDim.new(0, 3)
+SectionGeneralUICorner.Parent = SectionGeneral
+
+NotisToggle.Name = "NotisToggle"
+NotisToggle.Parent = GeneralSection
+NotisToggle.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
+NotisToggle.Position = UDim2.new(0, 0, 0, 46)
+NotisToggle.Size = UDim2.new(0, 302, 0, 18)
+NotisToggle.AutoButtonColor = false
+NotisToggle.Font = Enum.Font.Nunito
+NotisToggle.Text = "Notifications"
+NotisToggle.TextColor3 = Color3.fromRGB(207, 215, 255)
+NotisToggle.TextSize = 16.000
+NotisToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+NotisToggleUICorner.CornerRadius = UDim.new(0, 3)
+NotisToggleUICorner.Name = "NotisToggleUICorner"
+NotisToggleUICorner.Parent = NotisToggle
+
+NotisToggleStatus.Name = "NotisToggleStatus"
+NotisToggleStatus.Parent = NotisToggle
+NotisToggleStatus.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
+NotisToggleStatus.Position = UDim2.new(0.943917394, 0, 0.111111112, 0)
+NotisToggleStatus.Size = UDim2.new(0.0450000018, 0, 0.75, 0)
+
+NotisToggleStatusUICorner.CornerRadius = UDim.new(0, 3)
+NotisToggleStatusUICorner.Name = "NotisToggleStatusUICorner"
+NotisToggleStatusUICorner.Parent = NotisToggleStatus
+
+function sendNoti(text)
+	if not getgenv().notis then return end
+	local noti = NotisBG:Clone()
+	noti.Name = "Notification"
+	noti:WaitForChild("NotisText").Text = text
+	noti.Parent = NotisFrame
+	noti.Visible = true
+	--close
+	noti.MouseButton1Click:Connect(function()
+		noti:Destroy()
+	end)
+	for i = 1, 47 do
+		wait(.125)
+		if not noti:FindFirstChild("NotisBreak") then break end
+		noti.NotisBreak.Size = noti.NotisBreak.Size - UDim2.new(0,3.55,0,0)
+	end
+	wait(.125)
+	noti:Destroy()
+end
+
+NotisToggle.MouseButton1Click:Connect(function()
+	getgenv().notis = not getgenv().notis
+	if getgenv().notis then
+		NotisToggleStatus.BackgroundTransparency = 0
+		click(NotisToggle)
+		sendNoti("Notifications enabled")
+	else
+		NotisToggleStatus.BackgroundTransparency = 1
+		click(NotisToggle)
+	end
+end)
+--hover
+NotisToggle.MouseEnter:Connect(function()
+	if NotisToggle.BackgroundColor3 ~= getgenv().caccent then
+		NotisToggle.BackgroundColor3 = getgenv().caccent
+		NotisToggle.BackgroundTransparency = 0.6
+	end
+end)
+NotisToggle.MouseLeave:Connect(function()
+	if NotisToggle.BackgroundTransparency ~= 1 then
+		NotisToggle.BackgroundColor3 = getgenv().cbackground
+		NotisToggle.BackgroundTransparency = 0
+	end
+end)
+
+CloseUI.Name = "CloseUI"
+CloseUI.Parent = GeneralSection
+CloseUI.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
+CloseUI.Position = UDim2.new(0, 0, 0, 46)
+CloseUI.Size = UDim2.new(0, 302, 0, 18)
+CloseUI.AutoButtonColor = false
+CloseUI.Font = Enum.Font.Nunito
+CloseUI.Text = "Close UI"
+CloseUI.TextColor3 = Color3.fromRGB(207, 215, 255)
+CloseUI.TextSize = 16.000
+CloseUI.TextXAlignment = Enum.TextXAlignment.Left
+
+ConfirmClose.Name = "ConfirmClose"
+ConfirmClose.Parent = BG
+ConfirmClose.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ConfirmClose.BackgroundTransparency = 0.300
+ConfirmClose.Size = UDim2.new(0, 315, 0, 150)
+ConfirmClose.Visible = false
+ConfirmClose.ZIndex = 12
+
+ConfirmCloseText.Name = "ConfirmCloseText"
+ConfirmCloseText.Parent = ConfirmClose
+ConfirmCloseText.Active = true
+ConfirmCloseText.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
+ConfirmCloseText.Position = UDim2.new(0.0190476198, 0, 0.0266666673, 0)
+ConfirmCloseText.Size = UDim2.new(0, 304, 0, 23)
+ConfirmCloseText.ZIndex = 12
+ConfirmCloseText.Font = Enum.Font.Nunito
+ConfirmCloseText.Text = "Are you sure you want to exit?"
+ConfirmCloseText.TextColor3 = Color3.fromRGB(207, 215, 255)
+ConfirmCloseText.TextSize = 16.000
+ConfirmCloseText.TextWrapped = true
+
+ConfirmCloseTextUICorner.CornerRadius = UDim.new(0, 3)
+ConfirmCloseTextUICorner.Name = "ConfirmCloseTextUICorner"
+ConfirmCloseTextUICorner.Parent = ConfirmCloseText
+
+ConfirmCloseUICorner.Name = "ConfirmCloseUICorner"
+ConfirmCloseUICorner.Parent = ConfirmClose
+
+CloseConfirmClose.Name = "CloseConfirmClose"
+CloseConfirmClose.Parent = ConfirmClose
+CloseConfirmClose.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CloseConfirmClose.BackgroundTransparency = 1.000
+CloseConfirmClose.Size = UDim2.new(0, 315, 0, 150)
+CloseConfirmClose.ZIndex = 13
+CloseConfirmClose.Font = Enum.Font.SourceSans
+CloseConfirmClose.Text = ""
+CloseConfirmClose.TextColor3 = Color3.fromRGB(0, 0, 0)
+CloseConfirmClose.TextSize = 14.000
+
+CloseYes.Name = "CloseYes"
+CloseYes.Parent = ConfirmClose
+CloseYes.BackgroundColor3 = Color3.fromRGB(54, 78, 130)
+CloseYes.Position = UDim2.new(0, 11, 0, 46)
+CloseYes.Size = UDim2.new(0, 143, 0, 18)
+CloseYes.ZIndex = 13
+CloseYes.AutoButtonColor = false
+CloseYes.Font = Enum.Font.Nunito
+CloseYes.Text = "Yes"
+CloseYes.TextColor3 = Color3.fromRGB(207, 215, 255)
+CloseYes.TextSize = 16.000
+
+CloseYesUICorner.CornerRadius = UDim.new(0, 3)
+CloseYesUICorner.Name = "CloseYesUICorner"
+CloseYesUICorner.Parent = CloseYes
+
+CloseNo.Name = "CloseNo"
+CloseNo.Parent = ConfirmClose
+CloseNo.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
+CloseNo.Position = UDim2.new(0, 158, 0, 46)
+CloseNo.Size = UDim2.new(0, 143, 0, 18)
+CloseNo.ZIndex = 13
+CloseNo.AutoButtonColor = false
+CloseNo.Font = Enum.Font.Nunito
+CloseNo.Text = "No"
+CloseNo.TextColor3 = Color3.fromRGB(207, 215, 255)
+CloseNo.TextSize = 16.000
+
+CloseNoUICorner.CornerRadius = UDim.new(0, 3)
+CloseNoUICorner.Name = "CloseNoUICorner"
+CloseNoUICorner.Parent = CloseNo
+
+CloseUI.MouseButton1Click:Connect(function()
+	ConfirmClose.Visible = true
+end)
+--hover
+CloseUI.MouseEnter:Connect(function()
+	if CloseUI.BackgroundColor3 ~= getgenv().caccent then
+		CloseUI.BackgroundColor3 = getgenv().caccent
+		CloseUI.BackgroundTransparency = 0.6
+	end
+end)
+CloseUI.MouseLeave:Connect(function()
+	if CloseUI.BackgroundTransparency ~= 0 then
+		CloseUI.BackgroundColor3 = getgenv().cbackground
+		CloseUI.BackgroundTransparency = 0
+	end
+end)
+
+CloseYes.MouseButton1Click:Connect(function()
+	for _, v in pairs(Topbar:GetChildren()) do
+		if v.Name ~= "Type" and v.Name ~= "UICorner" then
+			v.Visible = false
+		end
+	end
+	game.TweenService:Create(ConfirmClose, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+		BackgroundTransparency = 1
+	}):Play()
+	wait()
+	game.TweenService:Create(Topbar, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0,0,0,0),
+		Position = UDim2.new(0, Topbar.AbsolutePosition.X + (Topbar.AbsoluteSize.X / 2), 0, Topbar.AbsolutePosition.Y + (Topbar.AbsoluteSize.Y / 2))
+	}):Play()
+	wait(.1)
+	ScreenGui:Destroy()
+end)
+CloseNo.MouseButton1Click:Connect(function()
+	ConfirmClose.Visible = false
+end)
+--hover
+CloseNo.MouseEnter:Connect(function()
+	if CloseNo.BackgroundColor3 ~= getgenv().caccent then
+		CloseNo.BackgroundColor3 = getgenv().caccent
+		CloseNo.BackgroundTransparency = 0.6
+	end
+end)
+CloseNo.MouseLeave:Connect(function()
+	if CloseNo.BackgroundTransparency ~= 1 then
+		CloseNo.BackgroundColor3 = getgenv().cbackground
+		CloseNo.BackgroundTransparency = 0
+	end
+end)
+CloseConfirmClose.MouseButton1Click:Connect(function()
+	ConfirmClose.Visible = false
+end)
+
+CloseUIUICorner.CornerRadius = UDim.new(0, 3)
+CloseUIUICorner.Name = "CloseUIUICorner"
+CloseUIUICorner.Parent = CloseUI
+
+CloseUInear_me.Name = "CloseUInear_me"
+CloseUInear_me.Parent = CloseUI
+CloseUInear_me.BackgroundTransparency = 1.000
+CloseUInear_me.LayoutOrder = 7
+CloseUInear_me.Position = UDim2.new(0.933774829, 0, 0, 0)
+CloseUInear_me.Size = UDim2.new(0.0599061139, 0, 1, 0)
+CloseUInear_me.ZIndex = 2
+CloseUInear_me.Image = "rbxassetid://3926305904"
+CloseUInear_me.ImageColor3 = Color3.fromRGB(207, 215, 255)
+CloseUInear_me.ImageRectOffset = Vector2.new(604, 764)
+CloseUInear_me.ImageRectSize = Vector2.new(36, 36)
 
 ThemeSection.Name = "ThemeSection"
 ThemeSection.Parent = OptionsPage
@@ -1218,7 +1494,7 @@ CurrentlyEditing.Parent = RGB_2
 InfoFrame.Name = "InfoFrame"
 InfoFrame.Parent = BG
 InfoFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-InfoFrame.BackgroundTransparency = 0.400
+InfoFrame.BackgroundTransparency = 0.300
 InfoFrame.Size = UDim2.new(0, 315, 0, 150)
 InfoFrame.ZIndex = 12
 InfoFrame.Visible = false
@@ -1662,7 +1938,7 @@ function createPage(title)
 	local newPage = Page:Clone()
 	newPage.Name = pages
 	newPage:WaitForChild("Section"):Destroy()
-	newPage:WaitForChild("Heading").Text = title
+	newPage:WaitForChild("Heading").Text = "<b>"..title.."</b>"
 	newPage.Parent = BG
 	if pages == 1 then
 		newPage.Visible = true
@@ -1811,7 +2087,7 @@ function createTextbox(parent,title,info,text)
 			newTextbox.BackgroundTransparency = 0
 		end
 	end)
-	
+
 	return newTextbox
 end
 
@@ -1869,7 +2145,7 @@ function createDropdown(parent,title,info,options,chosenOption)
 			newDropdown.Dropdown.BackgroundTransparency = 0
 		end
 	end)
-	
+
 	return newDropdown
 end
 
@@ -1918,7 +2194,7 @@ function createSlider(parent,title,info,start,stop,value)
 			newSlider.BackgroundTransparency = 0
 		end
 	end)
-	
+
 	return newSlider
 end
 
@@ -1976,27 +2252,6 @@ function createKeybind(parent,title,info,key,pressed)
 			newKeybind.BackgroundTransparency = 1
 		end
 	end)
-	
-	return newKeybind
-end
 
---notification
-function sendNoti(text)
-	if not getgenv().notis then return end
-	local noti = NotisBG:Clone()
-	noti.Name = "Notification"
-	noti:WaitForChild("NotisText").Text = text
-	noti.Parent = NotisFrame
-	noti.Visible = true
-	--close
-	noti.MouseButton1Click:Connect(function()
-		noti:Destroy()
-	end)
-	for i = 1, 47 do
-		wait(.125)
-		if not noti:FindFirstChild("NotisBreak") then break end
-		noti.NotisBreak.Size = noti.NotisBreak.Size - UDim2.new(0,3.55,0,0)
-	end
-	wait(.125)
-	noti:Destroy()
+	return newKeybind
 end
