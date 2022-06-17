@@ -286,7 +286,7 @@ ScreenGui.DescendantAdded:Connect(function(d)
 			t.Value = "Text"
 			t.Parent = uistroke
 		end
-		if d.Name == "ToggleStatus" or d.Name == "Slide" then
+		if string.find(d.Name,"ToggleStatus") or d.Name == "Slide" then
 			--type
 			local t = Instance.new("StringValue")
 			t.Name = "Type"
