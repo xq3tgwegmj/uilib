@@ -1932,6 +1932,13 @@ function createWindow(title,version)
 	Title.Text = "<b>"..title.."</b><font size='12' color='rgb(125, 125, 125)'>"..version.."</font>"
 end
 
+--update headings
+function updateHeading(heading,newText)
+	if heading:IsA("TextLabel") then
+		heading.Text = newText
+	end
+end
+
 --toggle ui
 function toggleUI()
 	Topbar.Visible = not Topbar.Visible
