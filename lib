@@ -203,6 +203,12 @@ ScreenGui.DescendantAdded:Connect(function(d)
 				t.Value = "Background"
 				t.Parent = d
 			end
+		else
+			--type
+			local t = Instance.new("StringValue")
+			t.Name = "Type"
+			t.Value = "Background"
+			t.Parent = d
 		end
 		--type2
 		local t = Instance.new("StringValue")
