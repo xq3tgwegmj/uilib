@@ -163,17 +163,6 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
-Circle.Name = "Circle"
-Circle.Parent = Topbar
-Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Circle.BackgroundTransparency = 1.000
-Circle.Visible = false
-Circle.ZIndex = 11
-Circle.Image = "rbxassetid://266543268"
-Circle.ImageColor3 = Color3.fromRGB(0, 0, 0)
-Circle.ImageTransparency = 0.500
-Circle.Visible = false
-
 --Click Effect
 function click(button)
 	button.BackgroundTransparency = 1
@@ -377,7 +366,12 @@ if getgenv().key ~= k then
 	Key.Parent = ScreenGui
 	Key.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
 	Key.Position = UDim2.new(0, 528, 0, 292)
-	Key.Size = UDim2.new(0, 315, 0, 54)
+	Key.Size = UDim2.new(0, 0, 0, 0)
+	--tween key
+	game.TweenService:Create(Key, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0,315,0,54),
+		Position = UDim2.new(0, Key.AbsolutePosition.X + (Key.AbsoluteSize.X / 2), 0, Key.AbsolutePosition.Y + (Key.AbsoluteSize.Y / 2))
+	}):Play()
 	--drag
 	local gui = Key
 	local dragging
@@ -525,7 +519,9 @@ Topbar.Name = "Topbar"
 Topbar.Parent = ScreenGui
 Topbar.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
 Topbar.Position = UDim2.new(0, 528, 0, 200)
-Topbar.Size = UDim2.new(0, 315, 0, 68)
+Topbar.Size = UDim2.new(0, 0, 0, 0)
+UICorner_33.Parent = Topbar
+
 --drag
 local gui = Topbar
 local dragging
@@ -569,9 +565,19 @@ BG.Parent = Topbar
 BG.BackgroundColor3 = Color3.fromRGB(22, 23, 36)
 BG.BorderColor3 = Color3.fromRGB(27, 42, 53)
 BG.Position = UDim2.new(0, 0, 0, 60)
-BG.Size = UDim2.new(0, 315, 0, 151)
-
+BG.Size = UDim2.new(0, 0, 0, 0)
 UICorner_3.Parent = BG
+--tween topbar
+game.TweenService:Create(Topbar, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+	Size = UDim2.new(0,315,0,71),
+	--Position = UDim2.new(0, Topbar.AbsolutePosition.X + (Topbar.AbsoluteSize.X / 2), 0, Topbar.AbsolutePosition.Y + (Topbar.AbsoluteSize.Y / 2))
+}):Play()
+--tween bg
+game.TweenService:Create(BG, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+	Size = UDim2.new(0,315,0,151),
+	--Position = UDim2.new(0, BG.AbsolutePosition.X + (BG.AbsoluteSize.X / 2), 0, BG.AbsolutePosition.Y + (BG.AbsoluteSize.Y / 2))
+}):Play()
+wait(.3)
 
 Page.Name = "Page"
 Page.Parent = BG
@@ -1049,9 +1055,21 @@ function sendNoti(text)
 	noti.Name = "Notification"
 	noti:WaitForChild("NotisText").Text = text
 	noti.Parent = NotisFrame
+	noti.Size = UDim2.new(0, 0, 0, 0)
 	noti.Visible = true
+	--tween noti open
+	game.TweenService:Create(noti, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+		Size = UDim2.new(0, 142, 0, 46),
+		--Position = UDim2.new(0, noti.AbsolutePosition.X + (noti.AbsoluteSize.X / 2), 0, noti.AbsolutePosition.Y + (noti.AbsoluteSize.Y / 2))
+	}):Play()
 	--close
 	noti.MouseButton1Click:Connect(function()
+		--tween noti close
+		game.TweenService:Create(noti, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+			Size = UDim2.new(0, 0, 0, 0),
+			--Position = UDim2.new(0, noti.AbsolutePosition.X + (noti.AbsoluteSize.X / 2), 0, noti.AbsolutePosition.Y + (noti.AbsoluteSize.Y / 2))
+		}):Play()
+		wait(.1)
 		noti:Destroy()
 	end)
 	for i = 1, 47 do
@@ -1172,7 +1190,13 @@ CloseNoUICorner.Name = "CloseNoUICorner"
 CloseNoUICorner.Parent = CloseNo
 
 CloseUI.MouseButton1Click:Connect(function()
+	ConfirmClose.Size = UDim2.new(0, 315, 0, 0)
 	ConfirmClose.Visible = true
+	--tween closeui open
+	game.TweenService:Create(ConfirmClose, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0, 315, 0, 150),
+		--Position = UDim2.new(0, Topbar.AbsolutePosition.X + (Topbar.AbsoluteSize.X / 2), 0, Topbar.AbsolutePosition.Y + (Topbar.AbsoluteSize.Y / 2))
+	}):Play()
 end)
 --hover
 CloseUI.MouseEnter:Connect(function()
@@ -1206,6 +1230,12 @@ CloseYes.MouseButton1Click:Connect(function()
 	ScreenGui:Destroy()
 end)
 CloseNo.MouseButton1Click:Connect(function()
+	--tween closeui close
+	game.TweenService:Create(ConfirmClose, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0, 315, 0, 0),
+		--Position = UDim2.new(0, Topbar.AbsolutePosition.X + (Topbar.AbsoluteSize.X / 2), 0, Topbar.AbsolutePosition.Y + (Topbar.AbsoluteSize.Y / 2))
+	}):Play()
+	wait(.1)
 	ConfirmClose.Visible = false
 end)
 --hover
@@ -1549,7 +1579,13 @@ CloseInfo.MouseButton1Click:Connect(function()
 end)
 function sendInfo(title,info)
 	InfoText.Text = "<b>"..title..":</b> "..info
+	InfoFrame.Size = UDim2.new(0, 315, 0, 0)
 	InfoFrame.Visible = true
+	--tween info open
+	game.TweenService:Create(InfoFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0, 315, 0, 150),
+		--Position = UDim2.new(0, Topbar.AbsolutePosition.X + (Topbar.AbsoluteSize.X / 2), 0, Topbar.AbsolutePosition.Y + (Topbar.AbsoluteSize.Y / 2))
+	}):Play()
 end
 
 NotisFrame.Name = "NotisFrame"
@@ -1799,9 +1835,6 @@ mouse.Move:connect(updateRGB)
 
 mouse.Button1Down:connect(function()mouse1Down = true end)
 mouse.Button1Up:connect(function()mouse1Down = false end)
-
-
-UICorner_33.Parent = Topbar
 
 Break_2.Name = "Break"
 Break_2.Parent = Topbar
