@@ -1938,11 +1938,6 @@ function createWindow(title,version)
 	Title.Text = "<b>"..title.."</b><font size='12' color='rgb(125, 125, 125)'>"..version.."</font>"
 end
 
---update text
-function updateText(text,newText)
-	text = newText
-end
-
 --toggle ui
 function toggleUI()
 	Topbar.Visible = not Topbar.Visible
