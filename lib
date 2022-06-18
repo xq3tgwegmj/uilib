@@ -1548,7 +1548,7 @@ CloseInfo.MouseButton1Click:Connect(function()
 	InfoFrame.Visible = false
 end)
 function sendInfo(title,info)
-	InfoText.Text = "<b>"..title.." :</b> "..info
+	InfoText.Text = "<b>"..title..":</b> "..info
 	InfoFrame.Visible = true
 end
 
