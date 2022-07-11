@@ -2045,8 +2045,8 @@ function createButton(parent,title,info,clicked)
 	newBtn.Parent = parent
 	--clicked
 	newBtn.MouseButton1Click:Connect(function()
-		click(newBtn)
 		clicked()
+		click(newBtn)
 	end)
 	--info clicked
 	newBtn:WaitForChild("Info").MouseButton1Click:Connect(function()
@@ -2082,8 +2082,8 @@ function createToggle(parent,title,info,clicked)
 		else
 			newToggle.ToggleStatus.BackgroundTransparency = 1
 		end
-		click(newToggle)
 		clicked(toggled)
+		click(newToggle)
 	end)
 	--info clicked
 	newToggle:WaitForChild("Info").MouseButton1Click:Connect(function()
@@ -2117,8 +2117,8 @@ function createTextbox(parent,title,info,text)
 	--text
 	newTextbox.FocusLost:Connect(function(enterPressed, inputThatCausedFocusLost)
 		if enterPressed then
-			click(newTextbox)
 			text(newTextbox.Text)
+			click(newTextbox)
 		end
 	end)
 	--hover
@@ -2273,8 +2273,8 @@ function createKeybind(parent,title,info,key,pressed)
 				keybindRecord = false
 			else
 				if tostring(i.KeyCode) == keyValue.Value then
-					click(newKeybind)
 					pressed()
+					click(newKeybind)
 				end
 			end
 		end
