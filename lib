@@ -167,7 +167,7 @@ ScreenGui.ResetOnSpawn = false
 function click(button)
 	button.BackgroundTransparency = 1
 	for i = 1,10 do
-		wait(0.01)
+		wait(0.005)
 		button.BackgroundTransparency = i/10
 	end
 end
