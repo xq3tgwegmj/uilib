@@ -1,0 +1,32 @@
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xq3tgwegmj/uilib/main/lib", true))()
+
+--page1
+createWindow("Title","Version")
+local page1 = createPage("Main")
+local section1 = createSection(page1, "Section1")
+local button1 = createButton(section1, "Button1", "Info", function()
+	sendNoti("Clicked")
+end)
+local toggle1 = createToggle(section1, "Toggle1", "Info", function(status)
+	sendNoti(tostring(status))
+end)
+local textbox1 = createTextbox(section1, "Textbox1", "Info", function(text)
+	sendNoti(text)
+end)
+local dropdown1 = createDropdown(section1, "Dropdown1", "Info", {"Option1","Option2","Option3"}, function(option)
+	sendNoti(option)
+end)
+local slider1 = createSlider(section1, "Slider1", "Info", 0, 100, function(value)
+	sendNoti(tostring(value))
+end)
+local keybind1 = createKeybind(section1, "Keybind1", "Info", Enum.KeyCode.F, function()
+	sendNoti("Pressed key")
+end)
+--toggleUI()
+
+
+--page2
+local page2 = createPage("Page 2")
+
+--page3
+local page3 = createPage("Page 3")
